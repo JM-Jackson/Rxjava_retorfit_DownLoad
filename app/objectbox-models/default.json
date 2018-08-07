@@ -1,0 +1,62 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:856615234542814166",
+      "lastPropertyId": "9:2903806621682287319",
+      "name": "DowmLoadModel",
+      "properties": [
+        {
+          "id": "1:8920591458222688087",
+          "name": "id"
+        },
+        {
+          "id": "2:7412352499876252030",
+          "name": "apkid"
+        },
+        {
+          "id": "3:2850119228380456884",
+          "name": "url"
+        },
+        {
+          "id": "4:4587807715114172174",
+          "name": "pathFile"
+        },
+        {
+          "id": "5:8750783669143143488",
+          "name": "status"
+        },
+        {
+          "id": "6:2643131199305462379",
+          "name": "packgerName"
+        },
+        {
+          "id": "7:389890868946373403",
+          "name": "version"
+        },
+        {
+          "id": "8:9137059417729653935",
+          "name": "progress"
+        },
+        {
+          "id": "9:2903806621682287319",
+          "name": "maxSize"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:856615234542814166",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
