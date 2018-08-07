@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +53,8 @@ public class AppStoreAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         AppStoreBean data = datas.get(position);
         ViewHolder viewHolder = (ViewHolder) holder;
-        viewHolder.imgIcon.setImageURI(Uri.parse(data.iconUrl));
+//        viewHolder.imgIcon.setImageURI(Uri.parse(data.iconUrl));
+        Glide.with(mContext).load(data.iconUrl).into(viewHolder.imgIcon);
 
         viewHolder.tvName.setText(data.name);
         viewHolder.introduce.setText(data.introduce);
