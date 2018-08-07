@@ -135,7 +135,6 @@ public class DownLoadManager {
                         File file = new File(model.pathFile);
 
                         boolean isPause = false;
-
                         //
                         if (lists.size()>0){
                             DowmLoadModel sqlModel = lists.get(0);
@@ -166,7 +165,7 @@ public class DownLoadManager {
                             outputStream.write(bytes, 0, len);
                             model.progress += len;
                             model.status = STATUS_DOWNLOADING;
-                            notesBox.put(model);
+
                             notifyObservers(model);
                         }
                         // 用户暂停了下载走到这里来了
