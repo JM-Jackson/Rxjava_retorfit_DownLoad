@@ -2,6 +2,7 @@ package download.comagic.com.rxjava_retorfit_download.Utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 
@@ -53,6 +54,26 @@ public class DownLoadUtils {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
         mContext.startActivity(intent);
+    }
+
+
+    /**
+     * 获取版本APK的版本名称
+     * @param packageName
+     * @return
+     */
+    public static String apkVersionName(String packageName) {
+        PackageManager pm = MyApplication.appContext.getPackageManager();
+        String versionName;
+        try {
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+             versionName =  packageInfo.versionName;
+
+        } catch (PackageManager.NameNotFoundException e) {
+            versionName = "";
+        }
+
+        return versionName;
     }
 
 }

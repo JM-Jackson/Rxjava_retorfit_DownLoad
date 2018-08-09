@@ -21,6 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--<receiver android:name=".AppInstallReceiver" android:enabled="true" >-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.PACKAGE_ADDED"></action>-->
+                <!--&lt;!&ndash; <action android:name="android.intent.action.PACKAGE_CHANGED"></action>&ndash;&gt;-->
+                <!--<action android:name="android.intent.action.PACKAGE_REMOVED"></action>-->
+                <!--<action android:name="android.intent.action.PACKAGE_REPLACED"></action>-->
+                <!--&lt;!&ndash; <action android:name="android.intent.action.PACKAGE_RESTARTED"></action>&ndash;&gt;-->
+                <!--&lt;!&ndash;  <action android:name="android.intent.action.PACKAGE_INSTALL"></action>&ndash;&gt;-->
+                <!--<data android:scheme="package"></data>-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+
     </application>
 
 </manifest>

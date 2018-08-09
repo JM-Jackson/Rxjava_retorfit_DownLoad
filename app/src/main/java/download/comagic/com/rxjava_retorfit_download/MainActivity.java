@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import download.comagic.com.rxjava_retorfit_download.Download.ApkReceiverListener;
+
 /**
  * @author leiyuanxin
  * @create 2018/8/6
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     private List<AppStoreBean > datas = new ArrayList<>();
+    private ApkReceiverListener apkReceiverListener;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +59,49 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        AppStoreAdapter adapter = new AppStoreAdapter(this);
+        final AppStoreAdapter adapter = new AppStoreAdapter(this);
         recyclerView.setAdapter(adapter);
         adapter.setDatas(datas);
 
+        apkReceiverListener = new ApkReceiverListener(this);
+        apkReceiverListener.setApkListener(new ApkReceiverListener.ApkListener() {
+            @Override
+            public void installation(String packageName) {
+                for (int i = 0; i < datas.size(); i++) {
+                    AppStoreBean data = datas.get(i);
+                    if (data.packageName.equals(packageName)){
+                        adapter.notifyItemChanged(i,"installation");
+                    }
+                }
+            }
+
+            @Override
+            public void update(String packageName) {
+                for (int i = 0; i < datas.size(); i++) {
+                    AppStoreBean data = datas.get(i);
+                    if (data.packageName.equals(packageName)){
+                        adapter.notifyItemChanged(i,"update");
+                    }
+                }
+            }
+
+            @Override
+            public void remove(String packageName) {
+                for (int i = 0; i < datas.size(); i++) {
+                    AppStoreBean data = datas.get(i);
+                    if (data.packageName.equals(packageName)){
+                        adapter.notifyItemChanged(i,"remove");
+                    }
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //去掉广播
+        apkReceiverListener.unregisterReceiver();
     }
 }

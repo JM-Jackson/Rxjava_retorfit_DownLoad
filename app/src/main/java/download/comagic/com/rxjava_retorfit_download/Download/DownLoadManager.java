@@ -50,6 +50,8 @@ public class DownLoadManager {
     public static final int STATUS_NOLOAD = 5;
     //暂停下载
     public static final int STATUS_STOP = 6;
+    //更新
+    public static final int STATUS_UPDATE = 7;
 
     /**
      * 用于存储所以的下载列队
@@ -246,9 +248,17 @@ public class DownLoadManager {
 
         //已经安装
         if (DownLoadUtils.isAppInstalled(data.packageName)) {
-            model.status = STATUS_INSTALLED;
-            notesBox.put(model);
-            return model;
+            if (DownLoadUtils.apkVersionName(data.packageName).equals(data.version)){
+                //版本号相同
+                model.status = STATUS_INSTALLED;
+                notesBox.put(model);
+                return model;
+            }else {
+                //进行版本更新
+                model.status = STATUS_UPDATE;
+                notesBox.put(model);
+                return model;
+            }
         }
 
         File saveApk = new File(model.pathFile);

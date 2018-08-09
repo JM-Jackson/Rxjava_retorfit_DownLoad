@@ -187,10 +187,15 @@ public class AppStoreAdapter extends RecyclerView.Adapter {
                     progressBar.setVisibility(View.GONE);
                     tvStatus.setText("安装");
                     break;
-                // 已安
+                // 已安装
                 case DownLoadManager.STATUS_INSTALLED:
                     progressBar.setVisibility(View.GONE);
                     tvStatus.setText("打开");
+                    break;
+                // 发现新版本需要更新
+                case DownLoadManager.STATUS_UPDATE:
+                    progressBar.setVisibility(View.GONE);
+                    tvStatus.setText("更新");
                     break;
 
                 default:
@@ -246,6 +251,12 @@ public class AppStoreAdapter extends RecyclerView.Adapter {
                     DownLoadUtils.openApk(MyApplication.appContext, info);
 
                     break;
+                //发现新版本进行下载更新
+                case DownLoadManager.STATUS_UPDATE:
+                    DownLoadManager.getInstance().downLoad(info);
+                    break;
+
+
                 default:
                     break;
             }
